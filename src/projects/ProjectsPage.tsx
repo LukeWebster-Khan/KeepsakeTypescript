@@ -3,10 +3,15 @@ import ProjectList from './ProjectList';
 import { Project } from './Project';
 
 const ProjectsPage = () => {
+    const saveProject = (project: Project) => {
+        console.log('saving Project :', project);
+    }
     return(
         <>
         <h1>Projects</h1>
-        <ProjectList projects={MOCK_PROJECTS} />
+        <ProjectList
+        onSave={saveProject}
+        projects={MOCK_PROJECTS} />
         </>
     )
 }
