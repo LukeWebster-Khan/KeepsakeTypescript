@@ -14,14 +14,14 @@ function ProjectList ({ projects, onSave}: ProjectListProps) {
   }
   const handleEdit = (project: Project) => {
     setprojectBeingEdited(project);
-    console.log(projectBeingEdited)
   };
     const items = projects.map(project => (
       <div key={project.id} className="cols-sm">
         {project === projectBeingEdited ?
       <Projectform
         onSave={onSave}
-        onCancel={cancelEditing}></Projectform>
+        onCancel={cancelEditing}
+        project={project}></Projectform>
       :
       <ProjectCard project={project} onEdit={handleEdit}></ProjectCard>
         }
