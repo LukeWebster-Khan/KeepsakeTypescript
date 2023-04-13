@@ -1,24 +1,20 @@
-import propTypes from "prop-types";
-import ProjectCard from "./ProjectCard";
-import {Project} from "./Project";
-import Projectform from "./ProjectForm";
+import { Project } from './Project';
+import ProjectCard from './ProjectCard';
+import Projectform from './ProjectForm';
 
 interface ProjectListProps {
   projects: Project[];
 }
 
-const ProjectList = ({ projects }: ProjectListProps) => {
-  return (
-    <>
-    <div className="row">
-      <ProjectCard project={projects} />
-      <Projectform />
-    </div>
-    </>
-  );
-};
+function ProjectList ({ projects }: ProjectListProps) {
+    const items = projects.map(project => (
+      <div key={project.id} className="cols-sm">
+      <ProjectCard project={project}></ProjectCard>
+      <Projectform></Projectform>
+      </div>
+    ));
+    return <div className="row">{items}</div>;
 
-ProjectList.propTypes = {
-  projects: propTypes.array,
-};
+}
+
 export default ProjectList;
