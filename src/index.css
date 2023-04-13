@@ -1,1 +1,5 @@
 @import '../node_modules/mini.css/dist/mini-dark.min.css';
+
+form{
+    width: 300px;
+}
