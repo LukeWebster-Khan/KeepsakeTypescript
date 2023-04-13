@@ -1,9 +1,12 @@
-import {Project} from './Project';
+import { Project } from "./Project";
 
 const ProjectCard = ({ project }: any) => {
-    return(
-        <>
-        {project.map((project: any) => (
+  const handleEditClick = (projectBeingEdited: Project) => {
+    console.log("Edit clicked", projectBeingEdited);
+  };
+  return (
+    <>
+      {project.map((project: any) => (
         <div key={project.id} className="cols-sm">
           <div className="card">
             <img src={project.imageUrl} alt={project.name} />
@@ -13,19 +16,23 @@ const ProjectCard = ({ project }: any) => {
               </h5>
               <p>{formatDescription(project.description)}</p>
               <p>Budget : £{project.budget.toLocaleString()}</p>
+              <button onClick={()=>handleEditClick(project)} className="bordered">
+                <span className="icon-edit "></span>
+                Edit
+              </button>
             </section>
           </div>
         </div>
       ))}
-        </>
-    )
-}
+    </>
+  );
+};
 
-function formatDescription(description: string): string {
-    return description.substring(0, 60) + '...';
-  }
+const formatDescription = (description: string): string => {
+  return description.substring(0, 60) + "...";
+};
 
 interface ProjectCardProps {
-    project: Project;
+  project: Project;
 }
-export default ProjectCard
+export default ProjectCard;
