@@ -14,10 +14,10 @@ const ProjectsPage = () => {
       try {
         const data = await projectAPI.get(currentPage);
         setError("");
-        if(currentPage === 1){
-            setProjects(data);
+        if (currentPage === 1) {
+          setProjects(data);
         } else {
-            setProjects(()=> [...projects, ...data])
+          setProjects(() => [...projects, ...data]);
         }
       } catch (e) {
         if (e instanceof Error) {
@@ -34,10 +34,12 @@ const ProjectsPage = () => {
     setCurrentPage((prev) => prev + 1);
   };
   const saveProject = (project: Project) => {
-    let updatedProjects = projects.map((p: Project) => {
-      return p.id === project.id ? project : p;
+    projectAPI.put(project).then((updatedProject) => {
+      let updatedProjects = projects.map((p: Project) => {
+        return p.id === project.id ? project : p;
+      });
+      setProjects(updatedProjects);
     });
-    setProjects(updatedProjects);
   };
   return (
     <>
