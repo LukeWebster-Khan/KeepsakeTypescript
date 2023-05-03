@@ -1,4 +1,5 @@
 import ProjectsPage from './projects/ProjectsPage';
+import ProjectPage from './projects/ProjectPage';
 import { BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom';
 import HomePage from './home/HomePage';
 
@@ -13,12 +14,12 @@ const App = () => {
         <span className="icon-home"></span>Home</NavLink>
         <NavLink className='button rounded' to="/projects">
         <span className="icon-briefcase"></span>Projects</NavLink>
-        
       </header>
         <div className='container'>
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/projects' element={<ProjectsPage />} />
+            <Route path='/projects/:id' element={<ProjectPage />} />
           </Routes>
         </div>
     </Router>
