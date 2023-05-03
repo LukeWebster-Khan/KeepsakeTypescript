@@ -50,6 +50,16 @@ function convertToProjectModel(item: any): Project {
 }
 
 const projectAPI = {
+  put(project: Project) {
+    return fetch(`${url}/${project.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(project),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  },
+
   get(page = 1, limit = 20) {
     return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
       .then(delay(600))
